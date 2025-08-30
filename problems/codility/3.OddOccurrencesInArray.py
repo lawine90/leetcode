@@ -7,10 +7,20 @@ from itertools import combinations
 e.g. A = [9, 3, 9, 3, 9, 7, 9]
 """
 def solution(A):
-    a_set = set(A)
+    # 아래 해결책은 A.count(e) 로 인해 연산 비용이 너무 높음.
+    # a_set = set(A)
+    #
+    # for e in a_set:
+    #     if A.count(e) % 2 != 0:
+    #         return e
+    #
+    # return None
 
-    for e in a_set:
-        if A.count(e) % 2 != 0:
+    from collections import Counter
+
+    e_counts = Counter(A)
+    for e, n in e_counts.items():
+        if n % 2 != 0:
             return e
 
     return None
