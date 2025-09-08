@@ -16,35 +16,47 @@ Write an efficient algorithm for the following assumptions:
 
 
 def solution(A):
-    current_min = 1
-    positive_count = 0
-    one_diff_count = 0
+    # current_min = 1
+    # positive_count = 0
+    # one_diff_count = 0
+    #
+    # A.sort()
+    #
+    # for i in range(len(A) - 1):
+    #     if A[i+1] < 0 and A[i] < 0:
+    #         next
+    #     elif A[i+1] > 0 and A[i] < 0:
+    #         current_min = A[i+1] - 1 if A[i+1] != 1 else 1
+    #     elif A[i+1] > 0 and A[i] > 0:
+    #         if positive_count == 0 and A[i] > 1:
+    #             return 1
+    #         else:
+    #             positive_count += 1
+    #
+    #         if A[i+1] - A[i] > 1:
+    #             return A[i] + 1
+    #         else:
+    #             one_diff_count += 1
+    #
+    # if positive_count == 0:
+    #     return 1
+    #
+    # if positive_count == one_diff_count:
+    #     current_min = A[-1] + 1
+    #
+    # return current_min
 
+    current_min = 1
     A.sort()
 
-    for i in range(len(A) - 1):
-        if A[i+1] < 0 and A[i] < 0:
-            next
-        elif A[i+1] > 0 and A[i] < 0:
-            current_min = A[i+1] - 1 if A[i+1] != 1 else 1
-        elif A[i+1] > 0 and A[i] > 0:
-            if positive_count == 0 and A[i] > 1:
-                return 1
-            else:
-                positive_count += 1
-
-            if A[i+1] - A[i] > 1:
-                return A[i] + 1
-            else:
-                one_diff_count += 1
-
-    if positive_count == 0:
-        return 1
-
-    if positive_count == one_diff_count:
-        current_min = A[-1] + 1
+    for e in A:
+        if e == current_min:
+            current_min += 1
+        elif e >= current_min:
+            break
 
     return current_min
+
 
 
 if __name__ == "__main__":
